@@ -26,7 +26,7 @@ public class Cuenta {
 
   public void poner(double cuanto) {
     if (cuanto > 0) {
-      validarMovimientosDiarios();
+      validarMaximosDepositosDiarios();
     }else{
       throw new MontoNegativoException(cuanto + ": el monto a ingresar debe ser un valor positivo");
     }
@@ -34,7 +34,7 @@ public class Cuenta {
 
 
   }
-  public void validarMovimientosDiarios(){
+  public void validarMaximosDepositosDiarios(){
     if (getMovimientos().stream().filter(movimiento -> movimiento.isDeposito()).count() >= 3) {
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
     }
